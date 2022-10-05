@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-bool isValidDifficulty(int d);
-
 void clearScreen() {
     system("clear");
 }
@@ -26,7 +24,7 @@ int readDifficulty() {
 
     do {
         scanf("%d", &difficulty);
-        validDifficulty = isValidDifficulty(difficulty);
+        validDifficulty = 1 <= difficulty && difficulty <= 3;
 
         if (!validDifficulty) {
             printf("Hiba! A nehezsegi szint 1,2 vagy 3 lehet.\n");
@@ -35,10 +33,6 @@ int readDifficulty() {
     } while (!validDifficulty);
 
     return difficulty;
-}
-
-bool isValidDifficulty(int d) {
-    return 1 <= d && d <= 3;
 }
 
 int readNextGuess(int maxValue) {

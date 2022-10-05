@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdbool.h>
 #include "get_random.h"
 #include "io_functions.h"
 
