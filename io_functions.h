@@ -6,7 +6,6 @@ void clearScreen() {
 }
 
 void greetings() {
-    clearScreen();
     printf("Udv kedves jatekos! Gondolni fogok egy szamra, neked ki kell talalnod. Kezdhetjuk? <enter>\n");
     getchar();
     return;
@@ -17,7 +16,6 @@ bool isValidDifficulty(int d) {
 }
 
 int getDifficulty() {
-    clearScreen();
     printf("Add meg a nehezsegi szintet!\n");
     printf("1 - konnyu (1-10)\n");
     printf("2 - kozepes (1-100)\n");
@@ -68,7 +66,6 @@ bool askToRepeat() {
 }
 
 void printDifficulty(int difficulty, int maxValue) {
-    clearScreen();
     printf("Valasztott nehezsegi szint: %d.\nGondoltam egy szamra 1 es %d kozott, kezdheted kitalalni!\n", difficulty, maxValue);
 }
 
@@ -78,4 +75,13 @@ void printSuccess(int counter) {
 
 void printGoodBye() {
     printf("Orultem, hogy egyutt jatszottunk. Viszlat!\n");
+}
+
+void printGuessFailure(int guess, int target) {
+    if (guess < target) {
+        printf("Ennel nagyobbra gondoltam.\n");
+    }
+    if (guess > target) {
+        printf("Ennel kisebbre gondoltam.\n");
+    }
 }

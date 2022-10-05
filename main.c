@@ -5,16 +5,13 @@
 
 static int MAX_VALUES[3];
 
+void initGame();
 void startRound();
 void startGuessing(int max, int target);
 
 int main()
 {
-    MAX_VALUES[0] = 10;
-    MAX_VALUES[1] = 100;
-    MAX_VALUES[2] = 10000;
-
-    init_random();
+    initGame();
     greetings();
 
     while (1)
@@ -28,7 +25,17 @@ int main()
     }    
 }
 
+void initGame() {
+    MAX_VALUES[0] = 10;
+    MAX_VALUES[1] = 100;
+    MAX_VALUES[2] = 10000;
+    init_random();
+    clearScreen();
+}
+
 void startRound() {
+    clearScreen();
+
     int difficulty = getDifficulty();
     int max = MAX_VALUES[difficulty - 1];
     int target = get_random(max);
@@ -43,14 +50,8 @@ void startGuessing(int max, int target) {
 
     do {
         guess = readNextInt(max);
+        printGuessFailure(guess, target);
         counter++;
-
-        if (guess < target) {
-            printf("Ennel nagyobbra gondoltam.\n");
-        }
-        if (guess > target) {
-            printf("Ennel kisebbre gondoltam.\n");
-        }
     } while (guess != target);
 
     printSuccess(counter);
