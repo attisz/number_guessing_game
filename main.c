@@ -35,8 +35,9 @@ void initGame() {
 
 void startRound() {
     clearScreen();
+    printDifficultyOptions();
 
-    int difficulty = getDifficulty();
+    int difficulty = readDifficulty();
     int max = MAX_VALUES[difficulty - 1];
     int target = get_random(max);
 
@@ -49,7 +50,7 @@ void startGuessing(int max, int target) {
     int counter = 0;
 
     do {
-        guess = readNextInt(max);
+        guess = readNextGuess(max);
         printGuessFailure(guess, target);
         counter++;
     } while (guess != target);

@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+bool isValidDifficulty(int d);
+
 void clearScreen() {
     system("clear");
 }
@@ -11,31 +13,35 @@ void greetings() {
     return;
 }
 
-bool isValidDifficulty(int d) {
-    return 1 <= d && d <= 3;
-}
-
-int getDifficulty() {
+void printDifficultyOptions() {
     printf("Add meg a nehezsegi szintet!\n");
     printf("1 - konnyu (1-10)\n");
     printf("2 - kozepes (1-100)\n");
     printf("3 - nehez (1-10000)\n");
+}
 
+int readDifficulty() {
     int difficulty = 0;
+    bool validDifficulty;
 
     do {
         scanf("%d", &difficulty);
+        validDifficulty = isValidDifficulty(difficulty);
 
-        if (!isValidDifficulty(difficulty)) {
+        if (!validDifficulty) {
             printf("Hiba! A nehezsegi szint 1,2 vagy 3 lehet.\n");
             getchar(); // to swallow trailing end line character
         }
-    } while (!isValidDifficulty(difficulty));
+    } while (!validDifficulty);
 
     return difficulty;
 }
 
-int readNextInt(int maxValue) {
+bool isValidDifficulty(int d) {
+    return 1 <= d && d <= 3;
+}
+
+int readNextGuess(int maxValue) {
     int input = 0;
     bool valid;
 
