@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "get_random.c"
-#include "io_functions.c"
+#include "get_random.h"
+#include "io_functions.h"
 
 static int MAX_VALUES[3];
 

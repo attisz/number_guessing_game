@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include "io_functions.h"
+
+void system(char* s);
 
 void clearScreen() {
     system("clear");
